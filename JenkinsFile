@@ -1,9 +1,7 @@
 pipeline{
-    agent{
-        docker{
-            image 'maven:3-alpine'
-            args '-v /root/.m2:/root/.m2'
-        }
+    agent any;
+    tools{
+        maven 'M3'
     }
     environment{
         New_Version = '1.0.3'
@@ -24,10 +22,11 @@ pipeline{
             }
         }
         stage('SonarQube analysis') {
-      steps {
-        withSonarQubeEnv('Sonarqube') {
-         sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar'
-        }
+     steps {
+              withSonarQubeEnv('sonar-server') {
+                sh 'java -version'
+                sh 'mvn clean package sonar:sonar'
+              }
       }
          }
         stage("Test"){

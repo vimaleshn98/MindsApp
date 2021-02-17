@@ -34,6 +34,29 @@
 		</dependency>
   </dependencies>
 
+ <profiles>
+  <profile>
+  <id>sonar</id>
+  <properties>
+    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+    <sonar.organization>sujjad</sonar.organization>
+  </properties>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.sonarsource.scanner.maven</groupId>
+        <artifactId>sonar-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+</profile>
+</profiles>
+
+
   <build>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
