@@ -42,11 +42,11 @@
     <sonar.organization>vimaleshn98</sonar.organization>
   </properties>
   <build>
-    <!-- <plugins>
+    <plugins>
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
-      </plugin> -->
+      </plugin>
       <plugin>
         <groupId>org.sonarsource.scanner.maven</groupId>
         <artifactId>sonar-maven-plugin</artifactId>
