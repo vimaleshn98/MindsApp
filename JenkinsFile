@@ -1,15 +1,17 @@
 pipeline{
-    agent any;
-    tools{
-        maven 'M3'
-    }
-        stage('SonarQube analysis') {
-     steps {
+   agent any;
+   tools{
+       maven 'M3'
+   }
+  stages {
+          stage("build & SonarQube analysis") {
+            agent any
+            steps {
               withSonarQubeEnv('sonarqube') {
                 sh 'java -version'
                 sh 'mvn clean package sonar:sonar'
               }
-      }
-         }
-        
+            }
+          }
+    }
 }
