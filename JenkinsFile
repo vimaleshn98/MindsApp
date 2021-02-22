@@ -6,19 +6,7 @@ pipeline{
     }
   }
   stages {
-          stage("change version name"){
-            steps{
-                sh 'mvn --batch-mode release:update-versions -DdevelopmentVersion=1.2.0-SNAPSHOT'
-            }
-            post{
-                success{
-                    echo "========change version name stage executed successfully========"
-                }
-                failure{
-                    echo "========Maven change version name execution failed========"
-                }
-            }
-        }
+
           stage("build & SonarQube analysis") {
             steps {
               withSonarQubeEnv('sonarqube') {
