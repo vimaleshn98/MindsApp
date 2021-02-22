@@ -22,7 +22,7 @@ public class MindsApp {
 		int choice;
 		do {
 			System.out.println(
-					"1 --> Create minds dataCreate minds dataCreate minds data\n 2 --> Delete Details\n 3--> Update data\n 4--> Display All minds\n 5-->Display Specific track\n 6-->add Tracks data\n Enter your choice");
+					"1 --> Create minds data\n 2 --> Delete Details\n 3--> Update data\n 4--> Display All minds\n 5-->Display Specific track\n 6-->add Tracks data\n Enter your choice");
 			choice = scanner.nextInt();
 			switch (choice) {
 			case 1:
