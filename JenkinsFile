@@ -15,5 +15,36 @@ pipeline{
               }
             }
           }
+          stage("Deployee"){
+           when {
+                expression {
+                        currentBuild.result == null || currentBuild.result == 'SUCCESS'
+                }
+            }
+                steps{
+     
+                     rtUpload (
+                         serverId: 'artifactory-server',
+                     spec: '''{
+                             "files": [
+                                      {
+                                     "pattern": "target/*.jar",
+                                     "target": "art-doc-dev-loc"
+                                    }
+                                ]
+                            }'''
+                        )
+                    }
+            post{
+                success{
+                    echo "========Deploying executed successfully  ${New_Version}========"
+
+                }
+                
+                failure{
+                    echo "========Deploying stage execution failed========"
+                }
+            }
+        }
     }
 }
