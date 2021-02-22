@@ -22,8 +22,9 @@ pipeline{
             }
             post{
                 success{
+                    echo "**************************************** ${currentBuild.number}******************************"
                     archiveArtifacts 'target/*.jar'
-                    echo "========**********Maven Packaging stage executed successfully************ $BUILD_NUMBER ========"
+                    echo "========**********Maven Packaging stage executed successfully************========"
 
                 }
                 
