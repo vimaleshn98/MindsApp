@@ -22,10 +22,6 @@ pipeline{
                     echo "========**********Maven Packaging stage executed successfully************========"
 
                 }
-                changed{
-                  echo "========**********Maven Packaging Changed executed successfully************========"
-                  //  archiveArtifacts 'target/*.jar'
-                }
                 
                 failure{
                     echo "========Maven Packaging stage execution failed========"
@@ -83,6 +79,20 @@ pipeline{
                     echo "========Deploying stage execution failed========"
                 }
             }
+        }
+    }
+     post{
+        always{
+            echo "========Running on ========"
+        }
+        changed{
+                    echo "========Their is change in Packaging from pervious========"
+                }
+        success{
+            echo "========pipeline executed successfully ========"
+        }
+        failure{
+            echo "========pipeline execution failed========"
         }
     }
 }
