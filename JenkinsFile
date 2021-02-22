@@ -14,28 +14,44 @@ pipeline{
                 sh 'mvn clean package sonar:sonar'
               }
             }
-          }
-          stage("Packaging"){
-            steps{
-                echo "Maven Packaging"
-                sh 'mvn package'
-            }
             post{
                 success{
                     echo "**************************************** ${currentBuild.number} and ${currentBuild.result}******************************"
+                    archiveArtifacts 'target/*.jar'
                     echo "========**********Maven Packaging stage executed successfully************========"
 
                 }
                 changed{
                   echo "========**********Maven Packaging Changed executed successfully************========"
-                   archiveArtifacts 'target/*.jar'
+                  //  archiveArtifacts 'target/*.jar'
                 }
                 
                 failure{
                     echo "========Maven Packaging stage execution failed========"
                 }
             }
-        }
+          }
+        //   stage("Packaging"){
+        //     steps{
+        //         echo "Maven Packaging"
+        //         sh 'mvn package'
+        //     }
+        //     post{
+        //         success{
+        //             echo "**************************************** ${currentBuild.number} and ${currentBuild.result}******************************"
+        //             echo "========**********Maven Packaging stage executed successfully************========"
+
+        //         }
+        //         changed{
+        //           echo "========**********Maven Packaging Changed executed successfully************========"
+        //            archiveArtifacts 'target/*.jar'
+        //         }
+                
+        //         failure{
+        //             echo "========Maven Packaging stage execution failed========"
+        //         }
+        //     }
+        // }
           stage("Deployee"){
            when {
                 expression {
