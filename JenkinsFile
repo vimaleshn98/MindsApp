@@ -15,6 +15,23 @@ pipeline{
               }
             }
           }
+          stage("Packaging"){
+            steps{
+                echo "Maven Packaging"
+                bat 'mvn package'
+            }
+            post{
+                success{
+                    archiveArtifacts 'target/*.jar'
+                    echo "========Maven Packaging stage executed successfully  ${New_Version}========"
+
+                }
+                
+                failure{
+                    echo "========Maven Packaging stage execution failed========"
+                }
+            }
+        }
           stage("Deployee"){
            when {
                 expression {
