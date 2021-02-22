@@ -18,7 +18,7 @@ pipeline{
           stage("Packaging"){
             steps{
                 echo "Maven Packaging"
-                bat 'mvn package'
+                sh 'mvn package'
             }
             post{
                 success{
