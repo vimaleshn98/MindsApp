@@ -11,7 +11,7 @@ pipeline{
             steps {
               withSonarQubeEnv('sonarqube') {
                 sh 'java -version'
-                sh 'mvn versions:set -DnewVersion=1.0.3-SNAPSHOT-${currentBuild.number}'
+                
                 sh 'mvn clean package sonar:sonar'
               }
             }
