@@ -40,7 +40,9 @@ pipeline{
           }
         stage("Quality gate") {
             steps {
-                flag=env.STAGE_NAME
+               script{
+                    flag=env.STAGE_NAME
+                }
                 waitForQualityGate abortPipeline: true
             }
         }
@@ -51,7 +53,9 @@ pipeline{
                 }
             }
                 steps{
+                   script{
                     flag=env.STAGE_NAME
+                }
                      rtUpload (
                          serverId: 'artifactory-server',
                      spec: '''{
