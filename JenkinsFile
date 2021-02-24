@@ -89,11 +89,11 @@ pipeline{
                     echo "========Their is change in Packaging from pervious========"
                 }
         success{
-            echo "========pipeline executed successfully ========"
+            echo "========pipeline executed successfully ${flag}  ========"
         }
         failure{
              emailext attachLog: true, body: 'Pipeline is failed on ${flag} ', compressLog: true, subject: 'Pipeline Failed in :', to: 'vimaleshn98@gmail.com '
-            echo "========pipeline execution failed========"
+            echo "========pipeline execution failed  ${flag}========"
         }
     }
 }
