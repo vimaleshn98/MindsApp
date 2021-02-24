@@ -1,3 +1,4 @@
+ def flag
 pipeline{
    agent {
     docker {
@@ -5,7 +6,9 @@ pipeline{
       args '-v /root/.m2:/root/.m2'
     }
   }
-    def flag
+
+        def flag
+
   stages {
 
           stage("build & SonarQube analysis") {
