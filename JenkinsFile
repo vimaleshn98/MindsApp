@@ -59,7 +59,7 @@ pipeline{
             post{
                 success{
                     echo "========Deploying executed successfully========"
-                   emailext body: 'artificate deployed to jfrog', subject: 'deploying stage', to: 'vimaleshn98@gmail.com '
+                   emailext attachLog: true, body: 'Hi Artificate is deployed sucessfully', compressLog: true, recipientProviders: [developers()], subject: 'Deploy sucessfull', to: 'vimaleshn98@gmail.com'
 
                 }
                 
