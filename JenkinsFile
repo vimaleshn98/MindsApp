@@ -5,9 +5,7 @@ pipeline{
       args '-v /root/.m2:/root/.m2'
     }
   }
-  environment{
-        def flag
-    }
+    def flag
   stages {
 
           stage("build & SonarQube analysis") {
