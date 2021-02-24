@@ -12,8 +12,8 @@ pipeline{
   stages {
           stage("build & SonarQube analysis") {
             steps {
-              withSonarQubeEnv('sonarqube') {
                 flag=env.STAGE_NAME
+              withSonarQubeEnv('sonarqube') {
                 sh 'java -version'
                 sh 'mvn clean package sonar:sonar'
                  echo "========********************************\nDeploying executed successfully\n***************========"
