@@ -12,9 +12,9 @@ pipeline{
   stages {
           stage("build & SonarQube analysis") {
             steps {
-                // script{
-                //     flag=env.STAGE_NAME
-                // }
+                script{
+                    flag=env.STAGE_NAME
+                }
               withSonarQubeEnv('sonarqube') {
                 sh 'java -version'
                 sh 'mvn clean package sonar:sonar'
