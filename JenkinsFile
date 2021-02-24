@@ -5,11 +5,15 @@ pipeline{
       args '-v /root/.m2:/root/.m2'
     }
   }
+  environment{
+        def flag
+    }
   stages {
 
           stage("build & SonarQube analysis") {
             steps {
               withSonarQubeEnv('sonarqube') {
+                flag=env.STAGE_NAME
                 sh 'java -version'
                 sh 'mvn clean package sonar:sonar'
                  echo "========********************************\nDeploying executed successfully\n***************========"
@@ -23,7 +27,6 @@ pipeline{
                 success{
                     echo "**************************************** ${currentBuild.number} and ${currentBuild.result}******************************"
                     archiveArtifacts 'target/*.jar'
-                    emailext attachLog: true, body: 'meows ', compressLog: true, subject: 'deplyed', to: 'vimaleshn98@gmail.com '
                     echo "========**********Maven Packaging stage executed successfully************========"
                 }
                 
@@ -34,6 +37,7 @@ pipeline{
           }
         stage("Quality gate") {
             steps {
+                flag=env.STAGE_NAME
                 waitForQualityGate abortPipeline: true
             }
         }
@@ -44,7 +48,7 @@ pipeline{
                 }
             }
                 steps{
-     
+                    flag=env.STAGE_NAME
                      rtUpload (
                          serverId: 'artifactory-server',
                      spec: '''{
@@ -81,6 +85,7 @@ pipeline{
             echo "========pipeline executed successfully ========"
         }
         failure{
+             emailext attachLog: true, body: 'Pipeline is failed on ${flag} ', compressLog: true, subject: 'Pipeline Failed in :', to: 'vimaleshn98@gmail.com '
             echo "========pipeline execution failed========"
         }
     }
