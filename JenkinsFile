@@ -59,7 +59,7 @@ pipeline{
             post{
                 success{
                     echo "========Deploying executed successfully========"
-                   emailext attachLog: true, body: 'Hi Artificate is deployed sucessfully', compressLog: true, recipientProviders: [developers()], subject: 'Deploy sucessfull', to: 'vimaleshn98@gmail.com'
+                   mail bcc: '', body: 'deploying is sucesfull', cc: '', from: '', replyTo: '', subject: 'deployed', to: 'vimaleshn98@gmail.com '
 
                 }
                 
