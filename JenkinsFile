@@ -15,7 +15,7 @@ pipeline{
                 script{
                     flag=env.STAGE_NAME
                 }
-              withSonarQubeEnv('sonarqube') {
+              withSonarQubeEnv('sonarqube2') {
                 sh 'java -version'
                 sh 'mvn clean package sonar:sonar'
                  echo "========********************************\nDeploying executed successfully\n***************========"
@@ -91,7 +91,7 @@ pipeline{
             echo "========pipeline executed successfully ${flag}  ========"
         }
         failure{
-            //  emailext attachLog: true, body: "<b> Pipeline is failed on ${flag} </b> <br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", compressLog: true, subject: 'Pipeline Failed in :', to: 'vimaleshn98@gmail.com '
+             emailext attachLog: true, body: "<b> Pipeline is failed on ${flag} </b> <br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", compressLog: true, subject: 'Pipeline Failed in :', to: 'vimaleshn98@gmail.com '
             echo "========pipeline execution failed  ${flag}========"
         }
     }
