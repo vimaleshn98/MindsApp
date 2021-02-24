@@ -23,6 +23,7 @@ pipeline{
                 success{
                     echo "**************************************** ${currentBuild.number} and ${currentBuild.result}******************************"
                     archiveArtifacts 'target/*.jar'
+                    emailext attachLog: true, body: 'meows ', compressLog: true, subject: 'deplyed', to: 'vimaleshn98@gmail.com '
                     echo "========**********Maven Packaging stage executed successfully************========"
                 }
                 
