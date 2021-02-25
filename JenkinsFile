@@ -17,7 +17,7 @@ pipeline{
                 }
               withSonarQubeEnv('sonarqube2') {
                 sh 'java -version'
-                sh 'mvn clean package sonar:sonar -Dsonar.analysis.mode=preview -Dsonar.issuesReport.html.enable=true'
+                sh 'mvn clean package sonar:sonar'
                  echo "========********************************\nDeploying executed successfully\n***************========"
               }
              
