@@ -59,14 +59,14 @@ pipeline{
                 }
                      rtUpload (
                          serverId: 'artifactory-server',
-                     spec: '''{
+                     spec: """{
                              "files": [
                                       {
                                      "pattern": "target/*.jar",
-                                     "target": "art-doc-dev-loc/"${env.BUILD_NUMBER}"/"
+                                     "target": "art-doc-dev-loc/${env.BUILD_NUMBER}/"
                                     }
                                 ]
-                            }'''
+                            }"""
                         )
                     }
             post{
