@@ -71,7 +71,7 @@ pipeline{
                     }
             post{
                 success{
-                    echo "========Deploying executed successfully========"
+                    echo "========Deploying executed successfully ${params.buildnumber}========"
                    mail bcc: '', body: 'deploying is sucesfull', cc: '', from: '', replyTo: '', subject: 'deployed', to: 'vimaleshn98@gmail.com '
 
                 }
