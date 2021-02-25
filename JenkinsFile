@@ -105,7 +105,9 @@ pipeline{
             post{
                 success{
                     echo "========Download executed successfully========"
-                    zip zipFile: 'bazinga.zip', archive: false, dir: 'bazinga/'
+                    script{
+                        zip zipFile: 'bazinga.zip', archive: false, dir: 'bazinga/'
+                    }
                     emailext attachLog: true, attachmentsPattern: "bazinga.zip", body: "<b> Artifact is downloaded with build number of ${params.buildnumber} </b> <br>Project: ${env.JOB_NAME} <br>Current Build Number: ${env.BUILD_NUMBER} <br> URL of build: ${env.BUILD_URL}", compressLog: true, subject: 'Pipeline Failed in :', to: 'vimaleshn98@gmail.com '
 
                 }
