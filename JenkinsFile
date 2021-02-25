@@ -42,7 +42,7 @@ pipeline{
                script{
                     flag=env.STAGE_NAME
                 }
-                timeout(time: 1, unit: 'MINUTES') { 
+                timeout(time: 1, unit: 'HOURS') { 
                 waitForQualityGate abortPipeline: true
                 }
             }
