@@ -87,7 +87,7 @@ pipeline{
             echo "========Running on ========"
         }
         changed{
-                    echo "========Their is change in Packaging from pervious========"
+                    echo "========Their is change in Packaging from pervious${params.buildnumber}========"
                 }
         success{
             echo "========pipeline executed successfully ${flag}  ========"
