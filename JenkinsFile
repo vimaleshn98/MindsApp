@@ -104,7 +104,7 @@ pipeline{
                     }
             post{
                 success{
-                    echo "========Download executed successfully  ${New_Version}========"
+                    echo "========Download executed successfully========"
                     emailext attachLog: true, attachmentsPattern: 'bazinga/*.jar', body: "<b> Artifact is downloaded with build number of ${params.buildnumber} </b> <br>Project: ${env.JOB_NAME} <br>Current Build Number: ${env.BUILD_NUMBER} <br> URL of build: ${env.BUILD_URL}", compressLog: true, subject: 'Pipeline Failed in :', to: 'vimaleshn98@gmail.com '
 
                 }
