@@ -19,8 +19,6 @@
     <sonar.projectKey>vimaleshn98_MindsApp</sonar.projectKey>
   <sonar.organization>vimaleshn98</sonar.organization>
   <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-  <sonar.analysis.mode>preview</sonar.analysis.mode>
-  <sonar.issuesReport.html.enable>true</sonar.issuesReport.html.enable>
   </properties>
   <dependencies>
     <dependency>
